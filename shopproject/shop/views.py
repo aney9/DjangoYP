@@ -1,4 +1,8 @@
 from django.shortcuts import render
+from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
+from django.urls import reverse_lazy
+from .models import *
+from .forms import *
 
 def first_view(request):
     return render(request, 'base.html')
@@ -29,3 +33,171 @@ def all_products_view(request):
 
 def cart_view(request):
     return render(request, 'cart.html')
+
+class ClothesListView(ListView):
+    model = Clothes
+    template_name = 'clothes/clothes_list.html'
+    context_object_name = 'clothes'
+
+class ClothesDetailView(DetailView):
+    model = Clothes
+    template_name = 'clothes/clothes_detail.html'
+    context_object_name = 'clothes'
+
+class ClothesCreateView(CreateView):
+    model = Clothes
+    form_class = ClothesForm
+    template_name = 'clothes/clothes_form.html'
+    success_url = reverse_lazy('clothes_list_view')
+
+class ClothesUpdateView(UpdateView):
+    model = Clothes
+    form_class = ClothesForm
+    template_name = 'clothes/clothes_form.html'
+    success_url = reverse_lazy('clothes_list_view')
+
+class ClothesDeleteView(DeleteView):
+    model = Clothes
+    context_object_name = 'clothes'
+    template_name = 'clothes/clothes_confirm_delete.html'
+    success_url = reverse_lazy('clothes_list_view')
+
+class BrandListView(ListView):
+    model = Brand
+    template_name = 'brand/brand_list.html'
+    context_object_name = 'brand'
+
+class BrandDetailView(DetailView):
+    model = Brand
+    template_name = 'brand/brand_detail.html'
+    context_object_name = 'brand'
+
+class BrandCreateView(CreateView):
+    model = Brand
+    form_class = BrandsForm
+    template_name = 'brand/brand_form.html'
+    success_url = reverse_lazy('brand_list_view')
+
+class BrandUpdateView(UpdateView):
+    model = Brand
+    form_class = BrandsForm
+    template_name = 'brand/brand_form.html'
+    success_url = reverse_lazy('brand_list_view')
+
+class BrandDeleteView(DeleteView):
+    model = Brand
+    context_object_name = 'brand'
+    template_name = 'brand/brand_confirm_delete.html'
+    success_url = reverse_lazy('brand_list_view')
+
+class CategoryProductListView(ListView):
+    model = CategoryProduct
+    template_name = 'categoryproduct/category_list.html'
+    context_object_name = 'category_product'
+
+class CategoryProductDetailView(DetailView):
+    model = CategoryProduct
+    template_name = 'categoryproduct/catgory_detail.html'
+    context_object_name = 'category_product'
+
+class CategoryProductCreateView(CreateView):
+    model = CategoryProduct
+    form_class = CategoryProductForm
+    template_name = 'categoryproduct/category_forms.html'
+    success_url = reverse_lazy('category_product_list_view')
+
+class CategoryProductUpdateView(UpdateView):
+    model = CategoryProduct
+    form_class = CategoryProductForm
+    template_name = 'categoryproduct/category_forms.html'
+    success_url = reverse_lazy('category_product_list_view')
+
+class CategoryProductDeleteView(DeleteView):
+    model = CategoryProduct
+    context_object_name = 'categoryproduct'
+    template_name = 'category_product/category_delete_confirm.html'
+    success_url = reverse_lazy('category_product_list_view')
+
+class PetTypeListView(ListView):
+    model = PetType
+    template_name = 'pettype/pet_type_list.html'
+    context_object_name = 'pet_type'
+
+class PetTypeDetailView(DetailView):
+    model = PetType
+    template_name = 'pettype/pet_type_detail.html'
+    context_object_name = 'pet_type'
+
+class PetTypeCreateView(CreateView):
+    model = PetType
+    form_class = PetTypeForm
+    template_name = 'pettype/pet_type_form.html'
+    success_url = reverse_lazy('pet_type_list_view')
+
+class PetTypeUpdateView(UpdateView):
+    model = PetType
+    form_class = PetTypeForm
+    template_name = 'pettype/pet_type_form.html'
+    success_url = reverse_lazy('pet_type_list_view')
+
+class PetTypeDeleteView(DeleteView):
+    model = PetType
+    context_object_name = 'pet_type'
+    template_name = 'pettype/pet_type_confirm_delete.html'
+    success_url = reverse_lazy('pet_type_list_view')
+
+class PromotionListView(ListView):
+    model = Promotion
+    template_name = 'promotion/promotion_list.html'
+    context_object_name = 'promotion'
+
+class PromotionDetailView(DetailView):
+    model = Promotion
+    template_name = 'promotion/promotion_detail.html'
+    context_object_name = 'promotion'
+
+class PromotionCreateView(CreateView):
+    model = Promotion
+    form_class = PromotionForm
+    template_name = 'promotion/promotion_form.html'
+    success_url = reverse_lazy('promotion_list_view')
+
+class PromotionUpdateView(UpdateView):
+    model = Promotion
+    form_class = PromotionForm
+    template_name = 'promotion/promotion_form.html'
+    success_url = reverse_lazy('promotion_list_view')
+
+class PromotionDeleteView(DeleteView):
+    model = Promotion
+    context_object_name = 'promotion'
+    template_name = 'promotion/promotion_confirm_delete.html'
+    success_url = reverse_lazy('promotion_list_view')
+
+class CatalogProductListView(ListView):
+    model = CatalogProduct
+    template_name = 'catalogproduct/catalog_product_list.html'
+    context_object_name = 'catalog_product'
+
+class CatalogProductDetailView(DetailView):
+    model = CatalogProduct
+    template_name = 'catalogproduct/catalog_product_detail.html'
+    context_object_name = 'catalog_product'
+
+class CatalogProductCreateView(CreateView):
+    model = CatalogProduct
+    form_class = CatalogProductForm
+    template_name = 'catalogproduct/catalog_product_form.html'
+    success_url = reverse_lazy('catalog_product_list_view')
+
+class CatalogProductUpdateView(UpdateView):
+    model = CatalogProduct
+    form_class = CatalogProductForm
+    template_name = 'catalogproduct/catalog_product_form.html'
+    success_url = reverse_lazy('catalog_product_list_view')
+
+class CatalogProductDeleteView(DeleteView):
+    model = CatalogProduct
+    context_object_name = 'catalog_product'
+    template_name = 'catalogproduct/catalog_product_confirm_delete.html'
+    success_url = reverse_lazy('catalog_product_list_view')
