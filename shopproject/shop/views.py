@@ -5,7 +5,7 @@ from .models import *
 from .forms import *
 
 def first_view(request):
-    return render(request, 'base.html')
+    return render(request, 'index.html')
 
 def second_view(request):
     return render(request, 'about.html')

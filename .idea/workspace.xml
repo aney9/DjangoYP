@@ -5,48 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c4e97954-5c12-4ba5-b6a3-a03f1b341256" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/forms.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/Brand/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/Brand/brand_confirm_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/Brand/brand_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/Brand/brand_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/Brand/brand_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/CatalogProduct/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/CatalogProduct/catalog_product_confirm_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/CatalogProduct/catalog_product_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/CatalogProduct/catalog_product_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/CatalogProduct/catalog_product_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/CategoryProduct/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/CategoryProduct/category_delete_confirm.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/CategoryProduct/category_forms.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/CategoryProduct/category_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/CategoryProduct/catgory_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/Clothes/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/Clothes/clothes_confirm_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/Clothes/clothes_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/Clothes/clothes_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/Clothes/clothes_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/PetType/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/PetType/pet_type_confirm_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/PetType/pet_type_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/PetType/pet_type_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/PetType/pet_type_list.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/Promotion/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/Promotion/promotion_confirm_delete.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/Promotion/promotion_detail.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/Promotion/promotion_form.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/Promotion/promotion_list.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shopproject/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shopproject/shop/templates/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shopproject/static/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shopproject/static/css/style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shopproject/templates/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shopproject/templates/_inc/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shopproject/templates/_inc/_footer.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/shopproject/templates/base.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shopproject/shop/admin.py" beforeDir="false" afterPath="$PROJECT_DIR$/shopproject/shop/admin.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shopproject/shop/apps.py" beforeDir="false" afterPath="$PROJECT_DIR$/shopproject/shop/apps.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shopproject/shop/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/shopproject/shop/models.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shopproject/shop/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/shopproject/shop/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shopproject/shop/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/shopproject/shop/templates/header.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shopproject/shop/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/shopproject/shop/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.venv/Scripts/activate" beforeDir="false" afterPath="$PROJECT_DIR$/.venv/Scripts/activate" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shopproject/shop/templates/Clothes/clothes_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/shopproject/shop/templates/Clothes/clothes_list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shopproject/shop/templates/base.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/shopproject/shop/templates/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/shopproject/templates/_inc/_header.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shopproject/shop/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/shopproject/shop/views.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/shopproject/shopproject/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/shopproject/shopproject/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/shopproject/shopproject/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/shopproject/shopproject/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shopproject/templates/first.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,30 +38,31 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="2yGiDEFshVZYBchwBEwDSn9Znu3" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "last_opened_file_path": "C:/Users/Тимофей/Desktop/praktikaYP",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Тимофей/Desktop/praktikaYP&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Тимофей\Desktop\praktikaYP\shopproject" />
+      <recent name="C:\Users\Тимофей\Desktop\praktikaYP\static" />
       <recent name="C:\Users\Тимофей\Desktop\praktikaYP\shopproject\shop\templates" />
       <recent name="C:\Users\Тимофей\Desktop\praktikaYP\shopproject\shop" />
-      <recent name="C:\Users\Тимофей\Desktop\praktikaYP\shopproject" />
     </key>
   </component>
   <component name="RunManager">
