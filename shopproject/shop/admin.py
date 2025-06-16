@@ -43,9 +43,9 @@ class PromotionAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(Cart)
-class CartAdmin(admin.ModelAdmin):
-    pass
+# @admin.register(Cart)
+# class CartAdmin(admin.ModelAdmin):
+#     pass
 
 
 @admin.register(Review)
@@ -58,7 +58,7 @@ class FavoriteAdmin(admin.ModelAdmin):
     pass
 
 
-@admin.register(Orderr)
+@admin.register(Order)
 class OrderrAdmin(admin.ModelAdmin):
     pass
 

@@ -1,8 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from django.urls import reverse_lazy
 from .models import *
 from .forms import *
+from basket.forms import BasketAddProductForm
+from django.contrib.auth import login, logout
+
 
 def first_view(request):
     return render(request, 'index.html')
@@ -28,8 +31,13 @@ def dogs_view(request):
 def rodents_view(request):
     return render(request, 'rodents.html')
 
-def all_products_view(request):
-    return render(request, 'all_products.html')
+def all_products(request):
+    catalog_product = CatalogProduct.objects.all()
+    form_basket = BasketAddProductForm()
+    return render(request, 'all_products.html', {
+        'catalog_product': catalog_product,
+        'form_basket': form_basket,
+    })
 
 def cart_view(request):
     return render(request, 'cart.html')
@@ -43,6 +51,7 @@ class ClothesDetailView(DetailView):
     model = Clothes
     template_name = 'clothes/clothes_detail.html'
     context_object_name = 'clothes'
+
 
 class ClothesCreateView(CreateView):
     model = Clothes
@@ -183,6 +192,10 @@ class CatalogProductDetailView(DetailView):
     model = CatalogProduct
     template_name = 'catalogproduct/catalog_product_detail.html'
     context_object_name = 'catalog_product'
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['form_basket'] = BasketAddProductForm()
+        return context
 
 class CatalogProductCreateView(CreateView):
     model = CatalogProduct
@@ -201,3 +214,33 @@ class CatalogProductDeleteView(DeleteView):
     context_object_name = 'catalog_product'
     template_name = 'catalogproduct/catalog_product_confirm_delete.html'
     success_url = reverse_lazy('catalog_product_list_view')
+
+
+def login_user(request):
+    if request.method == 'POST':
+        form = LoginForm(data=request.POST)
+        if form.is_valid():
+            login(request, form.get_user())
+            if request.GET.get('next'):
+                return redirect(request.GET.get('next'))
+            return redirect('catalog_product_list_view')
+    else:
+        form = LoginForm()
+    return render(request, 'auth/login.html', context={'form': form})
+
+
+def registration_user(request):
+    if request.method == 'POST':
+        form = RegistrationForm(data=request.POST)
+        if form.is_valid():
+            login(request, form.save())
+            if request.GET.get('next'):
+                return redirect(request.GET.get('next'))
+            return redirect('catalog_product_list_view')
+    else:
+        form = RegistrationForm()
+    return render(request, 'auth/registration.html', context={'form': form})
+
+def logout_user(request):
+    logout(request)
+    return redirect('catalog_product_list_view')

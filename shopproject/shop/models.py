@@ -124,18 +124,18 @@ class Promotion(models.Model):
         verbose_name_plural = 'Акции'
 
 
-class Cart(models.Model):
-    User = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
-    CatalogProduct = models.ForeignKey(CatalogProduct, on_delete=models.CASCADE, verbose_name='Продукт')
-    Quantity = models.PositiveIntegerField(verbose_name='Количество')
-    Price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
-
-    def __str__(self):
-        return f"{self.User.username} - {self.CatalogProduct.ProductName}"
-
-    class Meta:
-        verbose_name = 'Корзина'
-        verbose_name_plural = 'Корзины'
+# class Cart(models.Model):
+#     User = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
+#     CatalogProduct = models.ForeignKey(CatalogProduct, on_delete=models.CASCADE, verbose_name='Продукт')
+#     Quantity = models.PositiveIntegerField(verbose_name='Количество')
+#     Price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
+#
+#     def __str__(self):
+#         return f"{self.User.username} - {self.CatalogProduct.ProductName}"
+#
+#     class Meta:
+#         verbose_name = 'Корзина'
+#         verbose_name_plural = 'Корзины'
 
 
 class Review(models.Model):
@@ -167,17 +167,44 @@ class Favorite(models.Model):
         unique_together = ('User', 'CatalogProduct')
 
 
-class Orderr(models.Model):
-    User = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
-    TotalAmount = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Общая сумма')
-    OrderDate = models.DateTimeField(auto_now_add=True, verbose_name='Дата заказа')
-    CardNumber = models.CharField(max_length=20, verbose_name='Номер карты')
-    ExpiryDate = models.CharField(max_length=5, verbose_name='Срок действия карты')
-    CVC = models.CharField(max_length=3, verbose_name='CVC код')
+class Order(models.Model):
+    SHOP = "SH"
+    COURIER = "CR"
+    PICKUPPOINT = "PP"
+    TYPE_DELIVERY=[
+        (SHOP, 'Самовывоз'),
+        (COURIER, 'Курьер'),
+        (PICKUPPOINT, 'Пункт выдачи заказов'),
+    ]
+    buyer_surname = models.CharField(max_length=MAX_LENGTH, verbose_name='Фамилия покупателя')
+    buyer_name = models.CharField(max_length=MAX_LENGTH, verbose_name='Имя покупателя')
+    buyer_middlename = models.CharField(max_length=MAX_LENGTH, blank=True, null=True, verbose_name='Отчество покупателя')
+    comment = models.CharField(max_length=MAX_LENGTH, blank=True, null=True,verbose_name='Комментарий к заказу')
+    delivery_address = models.CharField(max_length=MAX_LENGTH, verbose_name='Адрес доставки')
+    delivery_type = models.CharField(max_length=2, choices=TYPE_DELIVERY, default=SHOP, verbose_name='Способ доставки')
+    date_create = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания заказа')
+    date_finish = models.DateTimeField(null=True, blank=True, verbose_name='Дата завершения заказа')
+
+    catalogproduct = models.ManyToManyField('CatalogProduct', through='Pos_order', verbose_name='Товар')
+
 
     def __str__(self):
-        return f"Заказ {self.id} от {self.User.username}"
+        return f"#{self.pk} - {self.buyer_surname} {self.buyer_name} {self.date_create}"
 
     class Meta:
         verbose_name = 'Заказ'
         verbose_name_plural = 'Заказы'
+
+
+class Pos_order(models.Model):
+    catalogproduct = models.ForeignKey(CatalogProduct, on_delete=models.PROTECT, verbose_name='продукт')
+    order = models.ForeignKey(Order, on_delete=models.PROTECT, verbose_name='Заказ')
+    count = models.PositiveIntegerField(default=1, verbose_name='Количство продукта')
+    discount = models.PositiveIntegerField(default=0, verbose_name='Скидка на позицию')
+
+    def __str__(self):
+        return f'{self.order.pk} {self.catalogproduct.name} ({self.order.buyer_surname} {self.order.buyer_name}'
+
+    class Meta:
+        verbose_name = 'Позиция заказа'
+        verbose_name_plural = 'Позиции заказов'
