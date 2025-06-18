@@ -4,58 +4,6 @@ from django.contrib.auth.models import User
 MAX_LENGTH = 255
 MAX_LENGTH_1 = 25
 
-
-class Category(models.Model):
-    name = models.CharField(max_length=MAX_LENGTH, verbose_name='Наименование категории')
-    description = models.TextField(null=True, blank=True, verbose_name='Описание')
-
-    # buy = models.OneToOneField('Clothes', on_delete=models.CASCADE, related_name=by_clothes)
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = 'Категория'
-        verbose_name_plural = 'Категории'
-
-
-class Collection(models.Model):
-    name = models.CharField(max_length=MAX_LENGTH, verbose_name='Наименование коллекции')
-    description = models.TextField(null=True, blank=True, verbose_name='Описание')
-
-    def __str__(self):
-        return self.name
-
-    class Meta:
-        verbose_name = 'Коллекция'
-        verbose_name_plural = 'Коллекции'
-
-
-class Clothes(models.Model):
-    name = models.CharField(max_length=MAX_LENGTH, verbose_name='Наименование позиции')
-    description = models.TextField(null=True, blank=True, verbose_name='Описание')
-    price = models.FloatField(verbose_name='Цена')
-    size = models.PositiveIntegerField(default=36, verbose_name='Размер')
-    color = models.CharField(max_length=MAX_LENGTH, verbose_name='Цвет')
-    photo = models.ImageField(upload_to='image/%Y/%m/%d', null=True, blank=True, verbose_name='изображение')
-    create_date = models.DateTimeField(auto_now_add=True, verbose_name='Дата добавления на сайт')
-    is_exists = models.BooleanField(default=True, verbose_name='Доступность к заказу')
-
-    category = models.ForeignKey(Category, on_delete=models.PROTECT,
-                                 verbose_name='Категория')  # protect не дает удалить
-
-    collection = models.ManyToManyField(Collection, verbose_name='Коллекция')
-
-    # buy = models.OneToOneField('Category', on_delete=models.CASCADE, null=True, blank=True)
-
-    def __str__(self):
-        return f"{self.name} - ({self.price} рублей.)"
-
-    class Meta:
-        verbose_name = 'Одежда'
-        verbose_name_plural = 'Одежды'
-
-
 class Brand(models.Model):
     BrandName = models.CharField(max_length=MAX_LENGTH_1, verbose_name='Название бренда')
     Img = models.ImageField(upload_to='image/%Y/%m/%d', verbose_name='изображение бренда')
@@ -123,19 +71,6 @@ class Promotion(models.Model):
         verbose_name = 'Акция'
         verbose_name_plural = 'Акции'
 
-
-# class Cart(models.Model):
-#     User = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name='Пользователь')
-#     CatalogProduct = models.ForeignKey(CatalogProduct, on_delete=models.CASCADE, verbose_name='Продукт')
-#     Quantity = models.PositiveIntegerField(verbose_name='Количество')
-#     Price = models.DecimalField(max_digits=10, decimal_places=2, verbose_name='Цена')
-#
-#     def __str__(self):
-#         return f"{self.User.username} - {self.CatalogProduct.ProductName}"
-#
-#     class Meta:
-#         verbose_name = 'Корзина'
-#         verbose_name_plural = 'Корзины'
 
 
 class Review(models.Model):

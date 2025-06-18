@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
 from django.urls import reverse_lazy
@@ -42,36 +43,37 @@ def all_products(request):
 def cart_view(request):
     return render(request, 'cart.html')
 
-class ClothesListView(ListView):
-    model = Clothes
-    template_name = 'clothes/clothes_list.html'
-    context_object_name = 'clothes'
+# class ClothesListView(ListView):
+#     model = Clothes
+#     template_name = 'clothes/clothes_list.html'
+#     context_object_name = 'clothes'
+#
+# class ClothesDetailView(DetailView):
+#     model = Clothes
+#     template_name = 'clothes/clothes_detail.html'
+#     context_object_name = 'clothes'
+#
+#
+# class ClothesCreateView(CreateView):
+#     model = Clothes
+#     form_class = ClothesForm
+#     template_name = 'clothes/clothes_form.html'
+#     success_url = reverse_lazy('clothes_list_view')
+#
+# class ClothesUpdateView(UpdateView):
+#     model = Clothes
+#     form_class = ClothesForm
+#     template_name = 'clothes/clothes_form.html'
+#     success_url = reverse_lazy('clothes_list_view')
+#
+# class ClothesDeleteView(DeleteView):
+#     model = Clothes
+#     context_object_name = 'clothes'
+#     template_name = 'clothes/clothes_confirm_delete.html'
+#     success_url = reverse_lazy('clothes_list_view')
 
-class ClothesDetailView(DetailView):
-    model = Clothes
-    template_name = 'clothes/clothes_detail.html'
-    context_object_name = 'clothes'
-
-
-class ClothesCreateView(CreateView):
-    model = Clothes
-    form_class = ClothesForm
-    template_name = 'clothes/clothes_form.html'
-    success_url = reverse_lazy('clothes_list_view')
-
-class ClothesUpdateView(UpdateView):
-    model = Clothes
-    form_class = ClothesForm
-    template_name = 'clothes/clothes_form.html'
-    success_url = reverse_lazy('clothes_list_view')
-
-class ClothesDeleteView(DeleteView):
-    model = Clothes
-    context_object_name = 'clothes'
-    template_name = 'clothes/clothes_confirm_delete.html'
-    success_url = reverse_lazy('clothes_list_view')
-
-class BrandListView(ListView):
+class BrandListView(PermissionRequiredMixin, ListView):
+    permission_required = 'shop.read_brand'
     model = Brand
     template_name = 'brand/brand_list.html'
     context_object_name = 'brand'
