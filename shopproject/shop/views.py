@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import permission_required
 from django.contrib.auth.mixins import PermissionRequiredMixin
 from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
@@ -78,119 +79,140 @@ class BrandListView(PermissionRequiredMixin, ListView):
     template_name = 'brand/brand_list.html'
     context_object_name = 'brand'
 
-class BrandDetailView(DetailView):
+class BrandDetailView(PermissionRequiredMixin, DetailView):
+    permission_required = 'shop.read_brand'
     model = Brand
     template_name = 'brand/brand_detail.html'
     context_object_name = 'brand'
 
-class BrandCreateView(CreateView):
+class BrandCreateView(PermissionRequiredMixin, CreateView):
+    permission_required = 'shop.create_brand'
     model = Brand
     form_class = BrandsForm
     template_name = 'brand/brand_form.html'
     success_url = reverse_lazy('brand_list_view')
 
-class BrandUpdateView(UpdateView):
+class BrandUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = 'shop.update_brand'
     model = Brand
     form_class = BrandsForm
     template_name = 'brand/brand_form.html'
     success_url = reverse_lazy('brand_list_view')
 
-class BrandDeleteView(DeleteView):
+class BrandDeleteView(PermissionRequiredMixin, DeleteView):
+    permission_required = 'shop.delete_brand'
     model = Brand
     context_object_name = 'brand'
     template_name = 'brand/brand_confirm_delete.html'
     success_url = reverse_lazy('brand_list_view')
 
-class CategoryProductListView(ListView):
+class CategoryProductListView(PermissionRequiredMixin, ListView):
+    permission_required = 'shop.read_categoryproduct'
     model = CategoryProduct
     template_name = 'categoryproduct/category_list.html'
     context_object_name = 'category_product'
 
-class CategoryProductDetailView(DetailView):
+class CategoryProductDetailView(PermissionRequiredMixin, DetailView):
+    permission_required = 'shop.read_categoryproduct'
     model = CategoryProduct
     template_name = 'categoryproduct/catgory_detail.html'
     context_object_name = 'category_product'
 
-class CategoryProductCreateView(CreateView):
+class CategoryProductCreateView(PermissionRequiredMixin, CreateView):
+    permission_required = 'shop.create_categoryproduct'
     model = CategoryProduct
     form_class = CategoryProductForm
     template_name = 'categoryproduct/category_forms.html'
     success_url = reverse_lazy('category_product_list_view')
 
-class CategoryProductUpdateView(UpdateView):
+class CategoryProductUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = 'shop.update_categoryproduct'
     model = CategoryProduct
     form_class = CategoryProductForm
     template_name = 'categoryproduct/category_forms.html'
     success_url = reverse_lazy('category_product_list_view')
 
-class CategoryProductDeleteView(DeleteView):
+class CategoryProductDeleteView(PermissionRequiredMixin, DeleteView):
+    permission_required = 'shop.delete_categoryproduct'
     model = CategoryProduct
     context_object_name = 'categoryproduct'
     template_name = 'category_product/category_delete_confirm.html'
     success_url = reverse_lazy('category_product_list_view')
 
-class PetTypeListView(ListView):
+class PetTypeListView(PermissionRequiredMixin, ListView):
+    permission_required = 'shop.read_pettype'
     model = PetType
     template_name = 'pettype/pet_type_list.html'
     context_object_name = 'pet_type'
 
-class PetTypeDetailView(DetailView):
+class PetTypeDetailView(PermissionRequiredMixin, DetailView):
+    permission_required = 'shop.read_pettype'
     model = PetType
     template_name = 'pettype/pet_type_detail.html'
     context_object_name = 'pet_type'
 
-class PetTypeCreateView(CreateView):
+class PetTypeCreateView(PermissionRequiredMixin, CreateView):
+    permission_required = 'shop.create_pettype'
     model = PetType
     form_class = PetTypeForm
     template_name = 'pettype/pet_type_form.html'
     success_url = reverse_lazy('pet_type_list_view')
 
-class PetTypeUpdateView(UpdateView):
+class PetTypeUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = 'shop.update_pettype'
     model = PetType
     form_class = PetTypeForm
     template_name = 'pettype/pet_type_form.html'
     success_url = reverse_lazy('pet_type_list_view')
 
-class PetTypeDeleteView(DeleteView):
+class PetTypeDeleteView(PermissionRequiredMixin, DeleteView):
+    permission_required = 'shop.delete_pettype'
     model = PetType
     context_object_name = 'pet_type'
     template_name = 'pettype/pet_type_confirm_delete.html'
     success_url = reverse_lazy('pet_type_list_view')
 
-class PromotionListView(ListView):
+class PromotionListView(PermissionRequiredMixin, ListView):
+    permission_required = 'shop.read_promotion'
     model = Promotion
     template_name = 'promotion/promotion_list.html'
     context_object_name = 'promotion'
 
-class PromotionDetailView(DetailView):
+class PromotionDetailView(PermissionRequiredMixin, DetailView):
+    permission_required = 'shop.read_promotion'
     model = Promotion
     template_name = 'promotion/promotion_detail.html'
     context_object_name = 'promotion'
 
-class PromotionCreateView(CreateView):
+class PromotionCreateView(PermissionRequiredMixin, CreateView):
+    permission_required = 'shop.create_promotion'
     model = Promotion
     form_class = PromotionForm
     template_name = 'promotion/promotion_form.html'
     success_url = reverse_lazy('promotion_list_view')
 
-class PromotionUpdateView(UpdateView):
+class PromotionUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = 'shop.update_promotion'
     model = Promotion
     form_class = PromotionForm
     template_name = 'promotion/promotion_form.html'
     success_url = reverse_lazy('promotion_list_view')
 
-class PromotionDeleteView(DeleteView):
+class PromotionDeleteView(PermissionRequiredMixin, DeleteView):
+    permission_required = 'shop.delete_promotion'
     model = Promotion
     context_object_name = 'promotion'
     template_name = 'promotion/promotion_confirm_delete.html'
     success_url = reverse_lazy('promotion_list_view')
 
-class CatalogProductListView(ListView):
+class CatalogProductListView(PermissionRequiredMixin, ListView):
+    permission_required = 'shop.read_catalogproduct'
     model = CatalogProduct
     template_name = 'catalogproduct/catalog_product_list.html'
     context_object_name = 'catalog_product'
 
-class CatalogProductDetailView(DetailView):
+class CatalogProductDetailView(PermissionRequiredMixin, DetailView):
+    permission_required = 'shop.read_catalogproduct'
     model = CatalogProduct
     template_name = 'catalogproduct/catalog_product_detail.html'
     context_object_name = 'catalog_product'
@@ -199,19 +221,22 @@ class CatalogProductDetailView(DetailView):
         context['form_basket'] = BasketAddProductForm()
         return context
 
-class CatalogProductCreateView(CreateView):
+class CatalogProductCreateView(PermissionRequiredMixin, CreateView):
+    permission_required = 'shop.create_catalogproduct'
     model = CatalogProduct
     form_class = CatalogProductForm
     template_name = 'catalogproduct/catalog_product_form.html'
     success_url = reverse_lazy('catalog_product_list_view')
 
-class CatalogProductUpdateView(UpdateView):
+class CatalogProductUpdateView(PermissionRequiredMixin, UpdateView):
+    permission_required = 'shop.update_catalogproduct'
     model = CatalogProduct
     form_class = CatalogProductForm
     template_name = 'catalogproduct/catalog_product_form.html'
     success_url = reverse_lazy('catalog_product_list_view')
 
-class CatalogProductDeleteView(DeleteView):
+class CatalogProductDeleteView(PermissionRequiredMixin, DeleteView):
+    permission_required = 'shop.delete_catalogproduct'
     model = CatalogProduct
     context_object_name = 'catalog_product'
     template_name = 'catalogproduct/catalog_product_confirm_delete.html'

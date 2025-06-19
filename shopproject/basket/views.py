@@ -73,6 +73,3 @@ def open_order(request):
     return render(request, 'order/order_form.html', context)
 
 
-def test_session(request):
-    request.session['test_key'] = 'test_value'
-    return HttpResponse(f"Session value: {request.session.get('test_key')}")
