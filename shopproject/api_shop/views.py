@@ -4,25 +4,25 @@ from rest_framework import viewsets, mixins
 from shop.models import *
 from .permission import *
 
-# class BrandViewSet(viewsets.ModelViewSet):
-#     permission_classes = [CustomPermission]
-#     serializer_class = BrandSerializer
-#     pagination_class = PaginationPage
-#
-#     def get_queryset(self):
-#         queryset = Brand.objects.all()
-#         BrandName = self.request.query_params.get('BrandName', None)
-#         if BrandName is not None:
-#             queryset = queryset.filter(BrandName__icontains=BrandName)
-#         return queryset
+class BrandViewSet(viewsets.ModelViewSet):
+    permission_classes = [CustomPermission]
+    serializer_class = BrandSerializer
+    pagination_class = PaginationPage
+
+    def get_queryset(self):
+        queryset = Brand.objects.all()
+        BrandName = self.request.query_params.get('BrandName', None)
+        if BrandName is not None:
+            queryset = queryset.filter(BrandName__icontains=BrandName)
+        return queryset
 
 
 
-class BrandViewSet(mixins.ListModelMixin,
-                      mixins.RetrieveModelMixin,
-                      viewsets.GenericViewSet):
-     queryset = Brand.objects.all()
-     serializer_class = BrandSerializer
+# class BrandViewSet(mixins.ListModelMixin,
+#                       mixins.RetrieveModelMixin,
+#                       viewsets.GenericViewSet):
+#      queryset = Brand.objects.all()
+#      serializer_class = BrandSerializer
 
 class PetTypeSet(viewsets.ModelViewSet):
     permission_classes = [CustomPermission]
